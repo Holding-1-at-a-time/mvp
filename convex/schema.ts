@@ -1,5 +1,5 @@
 // File: convex/schema.ts
-import { defineSchema, defineTable } from "convex/schema";
+import { defineSchema, defineTable } from "convex/server";
 import { v } from "convex/values";
 
 export default defineSchema({
@@ -13,6 +13,7 @@ export default defineSchema({
 
   users: defineTable({
     clerkId: v.string(),
+    tokenIdentifier: v.string(),
     name: v.string(),
     email: v.string(),
     organizationId: v.id("organizations"),

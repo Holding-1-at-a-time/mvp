@@ -1,6 +1,8 @@
 // File: convex/organizations.ts
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
+import { handleError } from "./utils/errorHandling";
+
 
 export const createOrganization = mutation({
     args: {

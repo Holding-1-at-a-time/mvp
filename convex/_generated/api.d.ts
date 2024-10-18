@@ -15,10 +15,10 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
-import type * as ASSESSMENTS from "../ASSESSMENTS.js";
+import type * as assessments from "../assessments.js";
 import type * as myFunctions from "../myFunctions.js";
 import type * as organizations from "../organizations.js";
-import type * as USERS from "../USERS.js";
+import type * as users from "../users.js";
 import type * as utils_errorHandling from "../utils/errorHandling.js";
 
 /**
@@ -30,10 +30,10 @@ import type * as utils_errorHandling from "../utils/errorHandling.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
-  ASSESSMENTS: typeof ASSESSMENTS;
+  assessments: typeof assessments;
   myFunctions: typeof myFunctions;
   organizations: typeof organizations;
-  USERS: typeof USERS;
+  users: typeof users;
   "utils/errorHandling": typeof utils_errorHandling;
 }>;
 export declare const api: FilterApi<
