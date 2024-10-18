@@ -1,0 +1,65 @@
+# .cursorrules for Slick Solutions
+
+# Client Vehicle Self-Assessment
+- Prioritize features related to the client vehicle self-assessment tool.
+- Assist in structuring data capture for vehicle details and image uploads.
+
+# Dynamic Estimate Generation
+- Focus on algorithms that dynamically calculate pricing based on vehicle assessments.
+- Enhance integration with tenant-provided service offerings and pricing inputs.
+
+# Google Calendar Integration
+- Emphasize seamless appointment booking and scheduling integration.
+- Support API interaction for syncing events and notifications.
+
+# Onboarding and Guidance
+- Provide tooltips and progress indicators for effective onboarding of tenants.
+- Assist in guiding the setup of services and pricing models.
+
+# Role-Based Access Control
+- Implement Clerk for managing RBAC ensuring secure access control features.
+- Develop role-specific functionalities and views for different user types.
+
+# User Authentication & Organization Management
+- Utilize Clerk for user authentication processes and tenant workspace isolation.
+- Ensure authentication flows are protected and efficiently managed.
+
+# User Feedback Mechanisms
+- Support development of feedback systems for post-assessment and post-appointment.
+- Collect actionable insights to refine and improve the platform continually.
+
+# General Development Practices
+- Encourage code modularization for maintainability and scalability.
+- Promote rigorous testing, especially for core features and integrations.
+
+# Architecture and Scalability
+- Prioritize deployment and hosting on Vercel for scalability and performance.
+- Use Convex for structured multitenant data storage, ensuring tenant data privacy and separation.
+- Leverage Clerk for managing user authentication, RBAC, and secure tenant organizations.
+
+# Client Vehicle Self-Assessment
+- Implement the frontend using Next.js 15 with Tailwind CSS and ShadCN-UI for user-friendly design.
+- Integrate seamless data flow to Convex, triggering real-time pricing algorithms based on client input.
+
+# Enhanced Onboarding Flow
+- Develop a guided onboarding process with progress tracking and tooltips for intuitive user experience.
+
+# Dynamic Pricing Algorithm
+- Construct a dynamic pricing algorithm to adjust estimates based on vehicle condition and services.
+- Ensure integration of pricing adjustments per tenant specifications and vehicle assessments.
+
+# Algorithm Outline
+- Capture user inputs for vehicle type, condition level, and requested services.
+- Output the generated estimate after processing through the pricing algorithm.
+
+# Google Calendar Integration
+- Synchronize appointment bookings with Google Calendar to manage schedules effectively.
+- Avoid double-booking and ensure seamless calendar invitation exchanges between clients and tenants.
+
+# User Feedback Mechanism
+- Facilitate feedback collection post-assessment and post-appointment with Convex storage for insights.
+- Prepare for analytics capabilities to refine platform features based on user feedback.
+
+# General Development Practices
+- Encourage code modularization for maintainability and scalability.
+- Promote rigorous testing, especially across varying tenant implementations.
