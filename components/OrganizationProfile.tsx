@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
     * @description      : 
     * @author           : Owner
@@ -26,6 +27,13 @@ import { OrganizationProfile } from "@clerk/nextjs";
 export default function OrganizationProfile() {
     return (
         <OrganizationProfile
+=======
+import { OrganizationProfile as ClerkOrganizationProfile } from "@clerk/nextjs";
+
+export default function OrganizationProfile() {
+    return (
+        <ClerkOrganizationProfile
+>>>>>>> 7e0094da4ed66d3db659a24faa511afe47ed4331
             appearance={{
                 elements: {
                     rootBox: "w-full max-w-2xl mx-auto",

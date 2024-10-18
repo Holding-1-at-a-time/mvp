@@ -17,7 +17,7 @@ import { handleError } from "./utils/errorHandling";
 
 export const createUser = mutation({
     args: {
-        clerkId: v.id("users"),
+        clerkId: v.string(),
         name: v.string(),
         email: v.string(),
         organizationId: v.id("organizations"),
@@ -39,7 +39,11 @@ export const createUser = mutation({
                 createdAt: Date.now(),
                 updatedAt: Date.now(),
             });
+<<<<<<< HEAD
             return await ctx.db.get(userId); // return the newly created user's ID
+=======
+            return userId;
+>>>>>>> 7e0094da4ed66d3db659a24faa511afe47ed4331
         } catch (error) {
             handleError(error, "createUser");
         }
