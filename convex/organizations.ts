@@ -11,14 +11,18 @@ export const createOrganization = mutation({
         logoUrl: v.optional(v.string()),
     },
     handler: async (ctx, args) => {
-        const organizationId = await ctx.db.insert("organizations", {
-            name: args.name,
-            slug: args.slug,
-            logoUrl: args.logoUrl,
-            createdAt: Date.now(),
-            updatedAt: Date.now(),
-        });
-        return organizationId;
+        try {
+            const organizationId = await ctx.db.insert("organizations", {
+                name: args.name,
+                slug: args.slug,
+                logoUrl: args.logoUrl,
+                createdAt: Date.now(),
+                updatedAt: Date.now(),
+            });
+            return organizationId;
+        } catch (error) {
+            handleError(error, "createOrganization");
+        }
     },
 });
 
