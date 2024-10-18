@@ -5,7 +5,7 @@ import { handleError } from "./utils/errorHandling";
 
 export const createUser = mutation({
     args: {
-        clerkId: v.id("users"),
+        clerkId: v.string(),
         name: v.string(),
         email: v.string(),
         organizationId: v.id("organizations"),
