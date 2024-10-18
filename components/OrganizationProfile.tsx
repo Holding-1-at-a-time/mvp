@@ -10,7 +10,7 @@
     * - Author          : Owner
     * - Modification    : 
 **/
-import { OrganizationProfile as ClerkOrganizationProfile } from "@clerk/nextjs";
+import { OrganizationProfile } from "@clerk/nextjs";
 
 /**
  * OrganizationProfile
@@ -22,11 +22,10 @@ import { OrganizationProfile as ClerkOrganizationProfile } from "@clerk/nextjs";
  * This component renders the Organization Profile page of the Clerk Next.js integration.
  * The page is styled according to the appearance prop and is accessible at the path specified
  * in the path prop.
- *
  */
 export default function OrganizationProfile() {
     return (
-        <ClerkOrganizationProfile
+        <OrganizationProfile
             appearance={{
                 elements: {
                     rootBox: "w-full max-w-2xl mx-auto",
