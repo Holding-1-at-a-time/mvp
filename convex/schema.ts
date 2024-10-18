@@ -1,30 +1,65 @@
-// NOTE: You can remove this file. Declaring the shape
-// of the database is entirely optional in Convex.
-// See https://docs.convex.dev/database/schemas.
-
-import { defineSchema, defineTable } from "convex/server";
+// File: convex/schema.ts
+import { defineSchema, defineTable } from "convex/schema";
 import { v } from "convex/values";
 
-export default defineSchema(
-  {
-    documents: defineTable({
-      fieldOne: v.string(),
-      fieldTwo: v.object({
-        subFieldOne: v.array(v.number()),
-      }),
-    }),
-    // This definition matches the example query and mutation code:
-    numbers: defineTable({
-      value: v.number(),
-    }),
-  },
-  // If you ever get an error about schema mismatch
-  // between your data and your schema, and you cannot
-  // change the schema to match the current data in your database,
-  // you can:
-  //  1. Use the dashboard to delete tables or individual documents
-  //     that are causing the error.
-  //  2. Change this option to `false` and make changes to the data
-  //     freely, ignoring the schema. Don't forget to change back to `true`!
-  { schemaValidation: true }
-);
+export default defineSchema({
+  organizations: defineTable({
+    name: v.string(),
+    slug: v.string(),
+    logoUrl: v.optional(v.string()),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  }).index("by_slug", ["slug"]),
+
+  users: defineTable({
+    clerkId: v.string(),
+    name: v.string(),
+    email: v.string(),
+    organizationId: v.id("organizations"),
+    role: v.string(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  }).index("by_clerk_id", ["clerkId"]),
+
+  assessments: defineTable({
+    organizationId: v.id("organizations"),
+    clientId: v.id("users"),
+    vehicleType: v.string(),
+    condition: v.string(),
+    images: v.array(v.string()),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  }).index("by_organization", ["organizationId"]),
+
+  quotes: defineTable({
+    organizationId: v.id("organizations"),
+    assessmentId: v.id("assessments"),
+    price: v.number(),
+    services: v.array(v.string()),
+    status: v.string(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  }).index("by_organization", ["organizationId"]),
+
+  appointments: defineTable({
+    organizationId: v.id("organizations"),
+    quoteId: v.id("quotes"),
+    clientId: v.id("users"),
+    detailerId: v.id("users"),
+    startTime: v.number(),
+    endTime: v.number(),
+    status: v.string(),
+    createdAt: v.number(),
+    updatedAt: v.number(),
+  }).index("by_organization", ["organizationId"]),
+
+  feedback: defineTable({
+    organizationId: v.id("organizations"),
+    userId: v.id("users"),
+    appointmentId: v.optional(v.id("appointments")),
+    assessmentId: v.optional(v.id("assessments")),
+    rating: v.number(),
+    comment: v.string(),
+    createdAt: v.number(),
+  }).index("by_organization", ["organizationId"]),
+});
