@@ -1,0 +1,19 @@
+name: Automated Code Review
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install gptme and GitHub CLI
+        run: |
+          pip install gptme
+          gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
+      - name: Run code review
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ./review_pr.sh ${{ github.repository }} ${{ github.event.pull_request.number }}
