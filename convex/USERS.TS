@@ -27,7 +27,7 @@ export const createUser = mutation({
                 createdAt: Date.now(),
                 updatedAt: Date.now(),
             });
-            return await ctx.db.get(clerkId);
+            return userId;
         } catch (error) {
             handleError(error, "createUser");
         }
