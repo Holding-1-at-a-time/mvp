@@ -19,6 +19,6 @@
     "isolatedModules": true,
     "noEmit": true
   },
-  "include": ["./**/*"],
+  "include": ["./**/*", ".myFunctions.ts"],
   "exclude": ["./_generated"]
 }

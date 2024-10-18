@@ -31,7 +31,6 @@ export const createOrganization = mutation({
          * @throws           : If the user is not authenticated.
          */
     handler: async (ctx, args) => {
-<<<<<<< HEAD
             const identity = await ctx.auth.getUserIdentity();
     if (identity === null) {
       throw new Error("Not authenticated");
@@ -43,20 +42,6 @@ export const createOrganization = mutation({
             createdAt: Date.now(),
             updatedAt: Date.now(),
         });
-=======
-        try {
-            const organizationId = await ctx.db.insert("organizations", {
-                name: args.name,
-                slug: args.slug,
-                logoUrl: args.logoUrl,
-                createdAt: Date.now(),
-                updatedAt: Date.now(),
-            });
-            return organizationId;
-        } catch (error) {
-            handleError(error, "createOrganization");
-        }
->>>>>>> 7e0094da4ed66d3db659a24faa511afe47ed4331
     },
 });
 

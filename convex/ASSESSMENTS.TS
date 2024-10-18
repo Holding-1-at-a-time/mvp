@@ -25,33 +25,6 @@ export const createAssessment = mutation({
         images: v.array(v.string()),
     },
     handler: async (ctx, args) => {
-<<<<<<< HEAD
-            const identity = await ctx.auth.getUserIdentity();
-    if (identity === null) {
-      throw new Error("Not authenticated");
-    }
-    const { vehicleType, condition, images } = args;
-
-        if (!['car', 'truck', 'motorcycle'].includes(vehicleType)) {  
-            throw new Error('Invalid vehicle type');  
-        }  
-        if (condition.length < 5 || condition.length > 500) {  
-            throw new Error('Condition must be between 5 and 500 characters');  
-        }  
-        if (images.length === 0 || images.length > 10) {  
-            throw new Error('Number of images must be between 1 and 10');  
-        }
-
-        return await ctx.db.insert("assessments", {
-            organizationId: args.organizationId,
-            clientId: args.clientId,
-            vehicleType,
-            condition,
-            images,
-            createdAt: Date.now(),
-            updatedAt: Date.now(),
-        });
-=======
         try {
             const assessmentId = await ctx.db.insert("assessments", {
                 ...args,
@@ -62,7 +35,6 @@ export const createAssessment = mutation({
         } catch (error) {
             handleError(error, "createAssessment");
         }
->>>>>>> 7e0094da4ed66d3db659a24faa511afe47ed4331
     },
 });
 
