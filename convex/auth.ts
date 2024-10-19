@@ -28,7 +28,7 @@ export const createTenant = mutation({
     handler: async (ctx, args) => {
         const userIdentity = await ctx.auth.getUserIdentity();
         if (userIdentity === null) {
-            throw new Error("Not authenticated");
+            throw new Error("Authentication required to create a tenant. Please sign in.");
         }
         try {
             return await ctx.db.insert("organizations", {
