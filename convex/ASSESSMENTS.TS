@@ -53,11 +53,13 @@ export const getAssessmentsByOrganization = query({
     if (identity === null) {
       throw new Error("Not authenticated");
     }
+    const pageSize = 50; // Adjust as needed
     return await ctx.db.query("assessments")
     .withIndex("by_organization", (q) =>
         q.eq("organizationId", args.organizationId)
     )
-    .collect();
+    .order("desc")
+    .take(pageSize);
         }
     }
 );
