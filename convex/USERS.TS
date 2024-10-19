@@ -1,3 +1,15 @@
+/**
+    * @description      : 
+    * @author           : Owner
+    * @group            : 
+    * @created          : 18/10/2024 - 01:28:22
+    * 
+    * MODIFICATION LOG
+    * - Version         : 1.0.0
+    * - Date            : 18/10/2024
+    * - Author          : Owner
+    * - Modification    : 
+**/
 // File: convex/users.ts
 import { v } from "convex/values";
 import { mutation, query } from "./_generated/server";
@@ -27,7 +39,7 @@ export const createUser = mutation({
                 createdAt: Date.now(),
                 updatedAt: Date.now(),
             });
-            return userId;
+            return await ctx.db.get(userId); // return the newly created user's ID
         } catch (error) {
             handleError(error, "createUser");
         }
